@@ -1,0 +1,19 @@
+<div class="formulario" (ngSubmit) = create()>
+    <h2>Formulario de contacto</h2>
+    <div class="titulo-formulario">{{ titulo }}</div>
+
+
+    <form>
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" [(ngModel)] = "cliente.nombre" name="nombre"><br><br>
+        <label for="apellido">Apellido</label>
+        <input type="text" id="apellido"  [(ngModel)] = "cliente.apellido" name="apellido"><br><br>
+        <label for="email">Email</label>
+        <input type="email" id="email" [(ngModel)] = "cliente.email" name="email"><br><br>
+    </form>
+
+    <div class="boton-formu">
+        <button type="submit" role="button" value="Enviar">Crear</button>
+    </div>
+
+</div>
