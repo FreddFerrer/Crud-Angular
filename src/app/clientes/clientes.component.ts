@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Cliente } from './cliente';
 import { ClienteService } from './cliente.service';
 import { CLIENTES } from './clientes.json';
@@ -10,13 +10,17 @@ import { Observable, of } from 'rxjs';
   templateUrl: './clientes.component.html'
   
 })
-export class ClientesComponent {
+export class ClientesComponent{
   clientes!: Cliente[];
+
+  
 
   constructor(private clienteService: ClienteService){
     this.clienteService.getClientes().subscribe(
       (clientes) => this.clientes = clientes
     );
   }
+
+
 
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Cliente } from './cliente';
 import { Observable,of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs';
 
 @Injectable({
@@ -10,6 +10,7 @@ import { map } from 'rxjs';
 export class ClienteService {
 
   private urlEndPoint:string = 'http://localhost:8080/api/clientes';
+  private HttpHeaders = new HttpHeaders({'Content-Type': 'application/json'})
 
   constructor(private http:HttpClient) { }
 
@@ -20,4 +21,12 @@ export class ClienteService {
   }
 
   //otra forma de castear:  return this.http.get<Cliente[]>(this.urlEndPoint)
+
+  create(cliente: Cliente) : Observable<Cliente>{
+    return this.http.post<Cliente>(this.urlEndPoint, cliente, {headers: this.HttpHeaders})
+  }
+
+  getCliente(id: number): Observable<Cliente>{
+    return this.http.get<Cliente>(`${this.urlEndPoint}/${id}`)
+  }
 }
